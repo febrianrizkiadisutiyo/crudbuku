@@ -1,0 +1,67 @@
+Microsoft Windows [Version 10.0.19044.1706]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Febrian Rizky>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 540
+Server version: 10.4.24-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| crudbuku           |
+| go_apps            |
+| goapps             |
+| information_schema |
+| kuliahweb          |
+| mysql              |
+| ngedate            |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+10 rows in set (0.001 sec)
+
+MariaDB [(none)]> use crudbuku
+Database changed
+MariaDB [crudbuku]> create table buku (
+    -> isbn varchar(15) primary key,
+    -> judul varchar(100),
+    -> pengarang(100),
+    -> jumlah int,
+    -> tanggal,
+    -> abstrak text);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(100),
+jumlah int,
+tanggal,
+abstrak text)' at line 4
+MariaDB [crudbuku]> create table buku(
+    -> isbn varchar(16) primary key,
+    -> judul varchar(100),
+    -> pengarang varchar(100),
+    -> jumlah int,
+    -> tanggal date,
+    -> abstrak text);
+Query OK, 0 rows affected (0.033 sec)
+
+MariaDB [crudbuku]> select * from buku;
++-------+------------------+-----------+--------+------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| isbn  | judul            | pengarang | jumlah | tanggal    | abstrak                                                                                                                                                                                                                                                                                              |
++-------+------------------+-----------+--------+------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| 18610 | belajar html     | febrian   |      1 | 2022-03-11 | Teknik Informatika merupakan salah satu jurusan pendidikan tingkat perguruan tinggi yang mempelajari serta menerapkan prinsip-prinsip ilmu komputer dan analisis matematis dalam perancangan, pengujian, pengembangan, dan evaluasi sistem operasi, perangkat lunak (software), dan kinerja komputer |
+| 18611 | belajar js       | febrian   |      4 | 2022-03-11 | Teknik Informatika merupakan salah satu jurusan pendidikan tingkat perguruan tinggi yang mempelajari serta menerapkan prinsip-prinsip ilmu komputer dan analisis matematis dalam perancangan, pengujian, pengembangan, dan evaluasi sistem operasi, perangkat lunak (software), dan kinerja komputer |
+| 18612 | belajar css      | febrian   |      1 | 2022-03-11 | Teknik Informatika merupakan salah satu jurusan pendidikan tingkat perguruan tinggi yang mempelajari serta menerapkan prinsip-prinsip ilmu komputer dan analisis matematis dalam perancangan, pengujian, pengembangan, dan evaluasi sistem operasi, perangkat lunak (software), dan kinerja komputer |
+| 18613 | belajar java     | febrian   |      1 | 2022-03-16 | Teknik Informatika merupakan salah satu jurusan pendidikan tingkat perguruan tinggi yang mempelajari serta menerapkan prinsip-prinsip ilmu komputer dan analisis matematis dalam perancangan, pengujian, pengembangan, dan evaluasi sistem operasi, perangkat lunak (software), dan kinerja komputer |
+| 18614 | belajar database | febrian   |      9 | 2022-09-16 | Teknik Informatika merupakan salah satu jurusan pendidikan tingkat perguruan tinggi yang mempelajari serta menerapkan prinsip-prinsip ilmu komputer dan analisis matematis dalam perancangan, pengujian, pengembangan, dan evaluasi sistem operasi, perangkat lunak (software), dan kinerja komputer |
++-------+------------------+-----------+--------+------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+5 rows in set (0.000 sec)
+
+MariaDB [crudbuku]>

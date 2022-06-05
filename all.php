@@ -1,17 +1,15 @@
 <?php
 include 'test.php';
-$query = "Select * from buku";
-
 /**
  * @var $connection PDO
  */
-
+$query = "Select * from buku";
 $statement = $connection->query($query);
 $statement->setFetchMode(PDO::FETCH_ASSOC);
 
 $results = $statement->fetchAll();
 
-header('Contet-Type: application/json');
+header('Content-Type: application/json');
 echo json_encode($results);
 
 
